@@ -481,7 +481,7 @@
                                                 <button class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewFeedback-@CV.CVId">Feedback</button>
                                                 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="viewFeedback-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="viewFeedback-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                                                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -585,6 +585,21 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+@*
+    <script>
+        $(document).ready(function () {
+            $('#feedbackModal, #viewFeedbackModal').on('show.bs.modal', function () {
+                $('body').addClass('modal-open');
+                $(this).on('click', function (e) {
+                    e.stopPropagation();
+                });
+            });
+
+            $('#feedbackModal, #viewFeedbackModal').on('hidden.bs.modal', function () {
+                $('body').removeClass('modal-open');
+            });
+        });
+    </script>*@
     <script>
         function onDelete(id) {
             Swal.fire({

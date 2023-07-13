@@ -210,22 +210,25 @@
             <div class="card">
                 <div class="card-body">
                     <br />
-                    <ul class="nav nav-tabs" style="justify-content: center">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/employer/apply/@user.Id/3">All applicants</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employer/apply/@user.Id/1">Waiting</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employer/apply/@user.Id/2">Accepted</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employer/apply/@user.Id/0">Denied</a>
-                        </li>
-                    </ul>
+                    <div class="featured__controls">
+                        <ul class="nav nav-tabs" style="justify-content: center">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/employer/apply/@user.Id/3">All applicants</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/employer/apply/@user.Id/1">Waiting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/employer/apply/@user.Id/2">Accepted</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/employer/apply/@user.Id/0">Denied</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
                     <br />
-                    <div class="table-responsive">
+                    <div class=" featured__filter table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -247,7 +250,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 @foreach (var CV in Model)
                                 {
                                     <tr class="header">
@@ -552,6 +555,29 @@
                 }
             })
         }
+
+        (function ($) {
+            /*------------------
+                Preloader
+            --------------------*/
+            $(window).on('load', function () {
+                $(".loader").fadeOut();
+                $("#preloder").delay(200).fadeOut("slow");
+
+                /*------------------
+                    Gallery filter
+                --------------------*/
+                $('.featured__controls li').on('click', function () {
+                    $('.featured__controls li').removeClass('active');
+                    $(this).addClass('active');
+                });
+
+                if ($('.featured__filter').length > 0) {
+                    var containerEl = document.querySelector('.featured__filter');
+                    var mixer = mixitup(containerEl);
+                }
+            });
+        })(jQuery);
     </script>
 
     <script>CKEDITOR.replace('CKEditor');</script>
