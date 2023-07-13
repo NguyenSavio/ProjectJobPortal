@@ -202,6 +202,24 @@
             color: #fff;
         }
     </style>
+    <style>
+        .table.overlay {
+            position: relative;
+            z-index: 9999; /* Số lớn để đảm bảo lớp này hiển thị phía trên các phần tử khác */
+        }
+
+            .table.overlay::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5); /* Màu của lớp chồng lên */
+                pointer-events: none; /* Chặn tất cả các sự kiện của lớp chồng lên */
+            }
+    </style>
+
 </head>
 
 <div class="content-wrapper">
@@ -467,7 +485,9 @@
 </div>
 
 @section Scripts {
-    @*<script>
+    
+    
+    <script>
         $(document).ready(function () {
             //Fixing jQuery Click Events for the iPad
             var ua = navigator.userAgent,
@@ -481,7 +501,7 @@
                 e.stopPropagation();
             });
         });
-    </script>*@
+    </script>
 
     <script>
         $(document).ready(function () {
